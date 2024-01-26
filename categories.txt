@@ -1,0 +1,14 @@
+1.Human Review
+2.Password Request
+3.Telephone Number Removal
+4.Payment/Settlement Arrangement
+5.Proof of Payment
+6.Paid Up Letter Request
+7.Statement Request
+8.Outsourced Matter
+9.Prescription
+10.Debt Review
+11.Customer Complaint
+12.Call Back Request
+13.Settlement Letter Request
+14.Spam
