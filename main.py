@@ -10,14 +10,15 @@ import os
 from llm_actions import llm_categorize, llm_reply
 
 # For Nimble Fresh Account:
-# BASE_URL = "https://nimblegroupservicedesk.freshservice.com/api/v2"
+# FRESH_BASE_URL = "https://nimblegroupservicedesk.freshservice.com/api/v2"
 
+# ENSURE that this variable is applicable to the Fresh Account that you are using
 # For Tate Fresh Account
-BASE_URL = "https://tateinc.freshdesk.com/api/v2"
+FRESH_BASE_URL = "https://tateinc.freshdesk.com/api/v2"
 
 FRESH_API_KEY = os.environ["TATEINC_API_KEY"]
 PASSWORD = "123"  # not needed
-URL = BASE_URL + "/tickets"
+URL = FRESH_BASE_URL + "/tickets"
 NON_REPLY_CATEGORIES = ["Spam", "Human Review"]
 
 
@@ -44,7 +45,7 @@ def fetch_all_tickets():
 # fetches all tickets NOT labled as auto_classified
 def fetch_unprocessed_tickets():
     url_query = 'query="cf_auto_classified:false"'
-    FILTER_URL = BASE_URL + "/search/tickets?" + url_query
+    FILTER_URL = FRESH_BASE_URL + "/search/tickets?" + url_query
 
     response = requests.get(FILTER_URL, auth=(FRESH_API_KEY, PASSWORD))
 
@@ -69,7 +70,7 @@ def update_ticket(ticket_id, category):
     headers = {
         "Content-Type": "application/json",
     }
-    UPDATE_URL = BASE_URL + f"/tickets/{ticket_id}"
+    UPDATE_URL = FRESH_BASE_URL + f"/tickets/{ticket_id}"
 
     response = requests.put(
         UPDATE_URL, auth=(FRESH_API_KEY, PASSWORD), json=update_fields, headers=headers
